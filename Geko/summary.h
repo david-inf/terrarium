@@ -1,16 +1,18 @@
-String summary_html_page(String temperature, String humidity, String brightness, int sun_moon, String color_led_temp,
-  String L_T_T_D, String H_T_T_D,String L_T_T_N, String H_T_T_N,String L_H_T,String H_H_T, String L_T ){
-  String img_sunmoon ="";
-  
-  switch (sun_moon){
-    case 1: 
-        img_sunmoon = "day.png?raw=true";
-        break;
+String summary_html_page(String temperature, String humidity, String brightness, int sun_moon,
+                         String color_led_temp,
+                         String L_T_T_D, String H_T_T_D, String L_T_T_N, String H_T_T_N,
+                         String L_H_T, String H_H_T, String L_T ) {
+  String img_sunmoon = "";
+
+  switch (sun_moon) {
+    case 1:
+      img_sunmoon = "day.png?raw=true";
+      break;
     case 2:
-        img_sunmoon = "night.png?raw=true";
-        break;    
+      img_sunmoon = "night.png?raw=true";
+      break;
   }
-    return R"==(
+  return R"==(
   
   <html>
   <head>

@@ -30,7 +30,7 @@ DHT dht11(DHT_PIN, DHT_TYPE);
 
 //---------------------------------
 
-//PINs definitions
+// PINs definitions
 const int RED_LED_PIN = 18;     // RED    =>  190ohm
 const int GREEN_LED_PIN = 19;   // GREEN  =>  180ohm
 const int BLUE_LED_PIN = 20;    // BLUE   =>  120ohm
@@ -67,6 +67,8 @@ String color_led_temp = "";
 
 int sun_moon = 0;  // per decidere se giorno o notte
 
+int hour = timestamp.substring(10, 12).toInt();
+
 /* DICHIARATE EVENTUALI VARIABILI DI CONFIGURAZIONE FUORI DAL SETUP */
 //////////////////////////////////////////////////////////////
 // Timestamp configuration
@@ -77,15 +79,16 @@ int dst = 0;
 
 /* IMPLEMENTATE LE FUNZIONI DI HANDLE PRIMA DEL SETUP */
 
-//Webserver handle functions
+// Webserver handle functions
 void handle_home() {
   Serial.println("GET /home");
-  server.send(200, "text/html", home_html_page() );
+  server.send(200, "text/html", home_html_page());
 }
 
 void handle_internal() {
   Serial.println("GET /internal_conditions");
-  server.send(200, "text/html", internal_html_page(String(temperature_value), String(humidity_value), String(int((1 - light_value / 1024) * 100)), temp_led, hum_led, brigh_led));
+  server.send(200, "text/html", internal_html_page(String(temperature_value), String(humidity_value),
+              String(int((1 - light_value / 1024) * 100)), temp_led, hum_led, brigh_led));
 }
 
 /*String status_red = "spenta";
@@ -95,7 +98,7 @@ void handle_internal() {
 
 void handle_changes() {
   Serial.println("GET /changes"); // sistemare
-  server.send(200, "text/html", changes_html_page(String(int((1 - light_value / 1024) * 100)), status_red, status_blu, light_over_thr ) );
+  server.send(200, "text/html", changes_html_page());
 }
 
 long last_control = millis();
@@ -103,9 +106,11 @@ long last_control = millis();
 
 void handle_summary() {
   Serial.println("GET /summary");
-  server.send(200, "text/html", summary_html_page(String(temperature_value), String(humidity_value), String(int((1 - light_value / 1024) * 100)), sun_moon, color_led_temp,
-              String(LOW_TEMPERATURE_THRESHOLD_DAY ), String(HIGH_TEMPERATURE_THRESHOLD_DAY ), String(LOW_TEMPERATURE_THRESHOLD_NIGHT ), String(HIGH_TEMPERATURE_THRESHOLD_NIGHT),
-              String(LOW_HUMIDITY_THRESHOLD), String(HIGH_TEMPERATURE_THRESHOLD), String(LIGHT_THRESHOLD )));
+  server.send( 200, "text/html", summary_html_page( String(temperature_value), String(humidity_value),
+               String(int((1 - light_value / 1024) * 100)), sun_moon, color_led_temp,
+               String(LOW_TEMPERATURE_THRESHOLD_DAY ), String(HIGH_TEMPERATURE_THRESHOLD_DAY ),
+               String(LOW_TEMPERATURE_THRESHOLD_NIGHT ), String(HIGH_TEMPERATURE_THRESHOLD_NIGHT),
+               String(LOW_HUMIDITY_THRESHOLD), String(HIGH_HUMIDITY_THRESHOLD), String(LIGHT_THRESHOLD) ) );
 }
 
 void handle_not_found() {
@@ -144,9 +149,11 @@ void setup(void) {
   Serial.print("Connected to ");  Serial.println(WIFI_SSID);
   Serial.print("IP address: ");   Serial.println(WiFi.localIP());
 
-  // Server setup
-  server.on("/", handle_index);
-  server.on("/temp.html", handle_internal);
+  // Server setup DAVID
+  server.on("/", handle_home);
+  server.on("/internal_conditions.html", handle_internal);
+  server.on("/changes.html", handle_changes);
+  server.on("/summary.html", handle_summary);
   server.onNotFound(handle_not_found); //When a client requests an unknown URI (i.e. something other than "/"), call function "handleNotFound"
 
   server.begin();
@@ -197,15 +204,21 @@ int count_timestamp_todrop = 0;
 /*********************************************************************/
 /*********************************************************************/
 
-int hour = timestamp.substring(10, 12).toInt();
-
 void loop(void) {
   //Handle client requests
   server.handleClient();
-  String new_min_hum = server.args("min_hum");  // va convertito
-  Serial.println(new_min_hum); // controllare il valore
 
-  //////////////////////////////////////////////////////////////
+  //---------------------------------
+  /* CHANGES */
+  float new_max_hum = float(server.args("max_hum"));  // va convertito  
+  float new_min_hum = float(server.args("min_hum"));  // va convertito  
+  Serial.println(new_max_hum); // controllare il valore
+  Serial.println(new_min_hum);
+  if (new_max_hum != HIGH_HUMIDITY_THRESHOLD) {
+    HIGH_HUMIDITY_THRESHOLD = new_max_hum;
+  }
+
+  //---------------------------------
 
   /***************************************************************************************/
   /* This block below, execute only every S seconds, without delay(S*1000); function!   */

@@ -1,4 +1,5 @@
-
+String changes_html_page() {
+  return R"==( // aggiornare
 
 <!DOCTYPE html>
 <html lang="en">
@@ -273,7 +274,7 @@
                 <h3>Humidity</h3>
                 <br>
                 <label for="name">Minimum Value:</label>
-                <input type="number" step="any" id="input" minlength="2" maxlength="2" name="min_hum"> <!--con number rende un float-->
+                <input type="number" step="any" id="input" minlength="2" maxlength="2" name="min_hum"> <!--con step rende un float-->
             </div>
         </div>
         <br>
@@ -298,3 +299,5 @@
 </body>
 
 </html>
+  )==";
+}
