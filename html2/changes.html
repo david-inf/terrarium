@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <title>Smart Terrarium</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:wght@350&family=Literata:ital,wght@1,500&display=swap"
+        rel="stylesheet">
+    <!--togliere visto non s'è usata-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="refresh" content="60">
     <link rel="shortcut icon" href="https://raw.githubusercontent.com/david-inf/terrarium/main/icona.ico">
-
-    <!-- <link href="terrarium.css" type="text/css" rel="stylesheet"> -->
 
     <style>
         * {
@@ -18,36 +16,40 @@
         }
 
         html {
-            margin: 0px;
-            padding: 0px;
+            margin: 0%;
+            padding: 0%;
         }
 
         body {
             background-image: url('https://raw.githubusercontent.com/david-inf/terrarium/main/sfondo.jpg');
-            height: 100%;
+            height: 130%;
+            width: 100%;
             background-attachment: fixed;
             background-repeat: no-repeat;
             background-position: center;
             background-size: cover;
-            margin: 0px;
-            padding: 0px;
+            margin: 0%;
+            padding: 0%;
+            margin-bottom: 40%;
+            margin-right: 0%;
         }
 
         h1 {
             font-family: 'Julius says one', sans-serif;
             text-align: center;
-            letter-spacing: 6px;
-            font-size: 70px;
+            letter-spacing: 1%;
+            font-size: 450%;
             color: #ffffff;
-            padding: 30px;
+            padding: 2%;
             margin-top: 0%;
+            width: 100%;
         }
 
         h2 {
             font-family: 'Julius says one', sans-serif;
             text-align: center;
-            letter-spacing: 1px;
-            font-size: 50px;
+            letter-spacing: 1%;
+            font-size: 300%;
             color: #0A3409;
         }
 
@@ -60,45 +62,58 @@
         h5 {
             text-align: center;
             color: #ffffff;
-            padding: -10px;
+            padding: 0%;
         }
 
         header {
             background-color: #0a3409;
-            height: 140px;
+            height: 25%;
+            width: 100%;
+            margin-right: 0%;
         }
 
         footer {
             background-color: #0a3409;
             position: fixed;
             width: 100%;
-            height: 60px;
-            bottom: 0;
+            height: 10%;
+            bottom: 0%;
             font-family: 'Poppins', sans-serif;
+            margin-right: 0%;
         }
 
         section {
-            margin-right: 0px;
-            padding-right: 0px;
+            margin-right: 0%;
+            padding-right: 0%;
         }
 
         #logo {
             float: left;
-            margin-left: -10px;
-            height: 200px;
+            margin-left: 2%;
+            height: 120%;
             margin-top: -1.5%;
         }
 
         #logo2 {
             float: right;
-            margin-right: -10px;
-            height: 200px;
+            margin-right: 2%;
+            height: 120%;
             margin-top: -1.5%;
         }
 
+        #input {
+            font-family: inherit;
+            font-size: inherit;
+            position: relative;
+            height: 100%;
+            width: 90%;
+            background-color: rgb(196, 221, 201);
+            margin-bottom: 1%;
+        }
+
         nav {
-            margin-right: 0px;
-            padding-right: 0px;
+            margin-right: 0%;
+            padding-right: 0%;
         }
 
         ul {
@@ -107,7 +122,7 @@
             padding: 0;
             overflow: hidden;
             position: absolute;
-            top: 130px;
+            top: 25%;
             width: 100%;
         }
 
@@ -122,8 +137,8 @@
             color: #000000;
             text-align: center;
             font-family: 'Poppins', sans-serif;
-            font-size: 20px;
-            padding: 15px 15px;
+            font-size: 150%;
+            padding: 5%;
             text-decoration: none;
         }
 
@@ -133,8 +148,7 @@
 
         .active {
             background-color: #90e70d;
-            border-radius: 0px 0px 0px 0px;
-            border: solid 1.5px #0A3409;
+            border: solid #0A3409;
         }
 
         .yoursThres {
@@ -149,12 +163,13 @@
         article {
             width: 50%;
             position: absolute;
-            top: 250px;
-            margin-left: 100px;
-            padding: 10px;
+            top: 40%;
+            margin-left: 7%;
+            padding: 1%;
             background-color: #e5ff0032;
-            border: solid 3px #1a4104;
+            border: solid #1a4104;
             text-align: center;
+
         }
 
         #container-box {
@@ -162,63 +177,39 @@
         }
 
         .box {
-            border: solid 1px #0A3409;
-            border-radius: 0px 0px 0px 0px;
+            border: solid #0A3409;
             width: 25%;
             text-align: center;
             display: inline-block;
-            margin: 10px;
+            margin: 2%;
         }
 
         h3 {
             font-family: 'Verdana', sans-serif;
             color: #000000;
-            font-size: 20px;
-            margin: 0px;
-            padding: 0px;
+            font-size: 100%;
+            margin: 0%;
+            padding: 0%;
         }
 
         .text-box {
             text-align: center;
-            font-size: 35px;
-            margin: 0px;
-            padding: 0px;
+            font-size: 30%;
+            margin: 0%;
+            padding: 0%;
         }
 
         #ingra {
             float: right;
-            margin-right: -10px;
-            padding-right: 0px;
-            height: 400px;
-            margin-top: 150px;
-        }
-
-        #input {
-            font-family: inherit;
-            font-size: inherit;
-            position: relative;
-            height: 100%;
-            width: 90%;
-            background-color: rgb(196, 221, 201);
-            margin-bottom: 5px;
-        }
-
-        .btn {
-            background-color: rgb(21, 138, 60);
-            color: white;
-            padding: 15px 20px;
-            cursor: pointer;
+            margin-top: 10%;
+            margin-right: -10%;
             width: 20%;
-            opacity: 0.9;
-            font-family: Arial, Helvetica, sans-serif;
-            border: solid 1px #0A3409;
-        }
+            height: 40%;
 
-        .btn:hover {
-            opacity: 1;
+
+
         }
     </style>
-
 </head>
 
 <body>
@@ -244,72 +235,59 @@
         <p>
             Here you can change the default thresholds set in the terrarium. You can only reduce the intervals, for the
             reptile's safety. The current thresholds are set in the margin values for the life conditions.
-            <br>
-            Hover over the input fields to see which values are available to be set.
         </p>
 
-        <form action="changes.html">
-            <div id="container-box">
-                <div class="box">
-                    <h3>Day Temperature</h3>
-                    <br>
-                    <!-- le faccio coincidere su un valore centrale, così high < low mai -->
-                    <input type="number" id="input" placeholder="Maximum Value" step="0.1" max="29" min="26"
-                        name="max_temp_day">
-                </div>
-                <div class="box">
-                    <h3>Day Temperature</h3>
-                    <br>
-                    <!--<label for="name">Minimum Value:</label>-->
-                    <input type="number" id="input" placeholder="Minimum Value" step="0.1" max="26" min="23"
-                        name="min_temp_day">
-                </div>
-            </div>
-            <div>
-                <div class="box">
-                    <h3>Night Temperature</h3>
-                    <br>
-                    <!--<label for="name">Maximum Value:</label>-->
-                    <input type="number" id="input" placeholder="Maximum Value" step="0.1" max="25" min="21"
-                        name="max_temp_night">
-                </div>
-                <div class="box">
-                    <h3>Night Temperature</h3>
-                    <br>
-                    <!--<label for="name">Minimum Value:</label>-->
-                    <input type="number" id="input" placeholder="Minimum Value" step="0.1" max="21" min="18"
-                        name="min_temp_night">
-                </div>
-            </div>
-            <br>
-            <div class="container-box">
-                <div class="box">
-                    <h3>Humidity</h3>
-                    <br>
-                    <!--<label for="name">Maximum Value:</label>-->
-                    <input type="number" id="input" placeholder="Maximum Value" step="0.5" max="50" min="40"
-                        name="max_hum">
-                </div>
-                <div class="box">
-                    <h3>Humidity</h3>
-                    <br>
-                    <!--<label for="name">Minimum Value:</label>-->
-                    <input type="number" id="input" placeholder="Minimum Value" step="0.5" max="40" min="30"
-                        name="min_hum">
-                </div>
-            </div>
-            <br>
+        <div id="container-box">
             <div class="box">
-                <h3>Brightness</h3>
+                <h3>Day Temperature</h3>
                 <br>
-                <!--<label for="name">Exact Value:</label>-->
-                <input type="number" id="input" placeholder="Exact Value" step="1" name="brt">
+                <label for="name">Maximum Value:</label>
+                <input type="text" id="input" minlength="2" maxlength="2" max="32" min="28">
             </div>
-
-            <p style="margin-top: 50px;"></p>
-
-            <button type="submit" class="btn">Submit</button>
-        </form>
+            <div class="box">
+                <h3>Day Temperature</h3>
+                <br>
+                <label for="name">Minimum Value:</label>
+                <input type="text" id="input" minlength="2" maxlength="2" max="32" min="28">
+            </div>
+        </div>
+        <div>
+            <div class="box">
+                <h3>Night Temperature</h3>
+                <br>
+                <label for="name">Maximum Value:</label>
+                <input type="text" id="input" minlength="2" maxlength="2">
+            </div>
+            <div class="box">
+                <h3>Night Temperature</h3>
+                <br>
+                <label for="name">Minimum Value:</label>
+                <input type="text" id="input" minlength="2" maxlength="2">
+            </div>
+        </div>
+        <br>
+        <div class="container-box">
+            <div class="box">
+                <h3>Humidity</h3>
+                <br>
+                <label for="name">Maximum Value:</label>
+                <input type="text" id="input" minlength="2" maxlength="2">
+            </div>
+            <div class="box">
+                <h3>Humidity</h3>
+                <br>
+                <label for="name">Minimum Value:</label>
+                <input type="number" step="any" id="input" minlength="2" maxlength="2" name="min_hum">
+                <!--con number rende un float-->
+            </div>
+        </div>
+        <br>
+        <div class="box">
+            <h3>Brightness</h3>
+            <br>
+            <label for="name">Exact Value:</label>
+            <input type="text" id="input">
+        </div>
 
         <p style="margin-top: 100px;"></p>
     </article>
